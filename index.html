@@ -82,51 +82,8 @@
       padding: 1.75rem;
       max-width: 32rem;
     }
-    .card label {
-      display: block;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-top: 1rem;
-    }
-    .card label:first-of-type { margin-top: 0; }
-    .card input {
-      width: 100%;
-      margin-top: 0.35rem;
-      padding: 0.55rem 0.65rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    .consent-block {
-      margin-top: 1.25rem;
-      padding: 1rem;
-      background: var(--bg);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-    .consent-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.65rem;
-    }
-    .consent-row input[type="checkbox"] {
-      width: auto;
-      margin-top: 0.35rem;
-      flex-shrink: 0;
-    }
-    .consent-row label {
-      margin: 0;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-    .dlc {
-      margin: 0.85rem 0 0;
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
     .btn {
-      margin-top: 1.25rem;
+      margin-top: 0.5rem;
       width: 100%;
       padding: 0.65rem 1rem;
       font-size: 1rem;
@@ -138,15 +95,6 @@
       cursor: pointer;
     }
     .btn:hover { background: var(--accent-dark); }
-    .btn:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-    .fine {
-      margin-top: 0.75rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
     .site-footer {
       margin-top: 2rem;
       padding: 2rem 0 2.5rem;
@@ -195,36 +143,15 @@
       <div class="wrap">
         <h2 id="secure-heading">Secure Your Dogs</h2>
         <p class="section-lead">
-          Add someone who can help if you miss a check-in. The sample form below mirrors how we collect consent in product flows—checkbox stays off until the contact agrees, with standard carrier disclosures.
+          Emergency contacts complete a <strong>double opt-in</strong> on our registration portal: consent with your mobile number, then a 6-digit device verification step. That flow lives on the SMS registration page so auditors and users see one canonical experience.
         </p>
 
         <div class="card">
-          <h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Add emergency contact</h3>
-          <p style="margin: 0; color: var(--muted); font-size: 0.9rem;">Demo only — does not save data.</p>
-
-          <form id="demo-contact-form" action="#" method="get" novalidate>
-            <label for="ec-name">Contact name</label>
-            <input id="ec-name" name="ec-name" type="text" autocomplete="name" placeholder="Alex Rivera" />
-
-            <label for="ec-phone">Mobile number</label>
-            <input id="ec-phone" name="ec-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+1 480 555 0123" />
-
-            <div class="consent-block">
-              <div class="consent-row">
-                <input type="checkbox" id="ec-sms-consent" name="ec-sms-consent" value="1" />
-                <label for="ec-sms-consent">
-                  I agree to receive automated SMS messages from CrateLuv (MagicGifts LLC) about emergency pet-safety alerts for accounts that list me as a contact. I am at least 18 years of age.
-                </label>
-              </div>
-              <p class="dlc">
-                Message frequency varies. <strong>Message and data rates may apply.</strong> Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for help. Consent is not a condition of purchase. See our
-                <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a> (including SMS Terms).
-              </p>
-            </div>
-
-            <button type="submit" class="btn" id="ec-submit" disabled>Add emergency contact</button>
-            <p class="fine" id="ec-demo-note" hidden>This page is for demonstration; nothing is transmitted or stored.</p>
-          </form>
+          <h3 style="margin: 0 0 0.35rem; font-size: 1.1rem;">Add emergency contact</h3>
+          <p style="margin: 0 0 1rem; color: var(--muted); font-size: 0.95rem;">
+            Open the <strong>CrateLuv Contact Registration Portal</strong> for the full consent and verification experience (demo UI; production sends OTP via your configured messaging provider).
+          </p>
+          <a class="btn" href="sms-compliance.html" style="display: inline-block; text-align: center; text-decoration: none;">CrateLuv Contact Registration Portal</a>
         </div>
       </div>
     </section>
@@ -239,36 +166,11 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p style="margin: 0;"><strong>© 2026 MagicGifts LLC</strong> — the registered brand owner of CrateLuv.</p>
-      <p style="margin: 0.35rem 0 0;">11485 N 103rd Pl, Scottsdale, AZ 85260</p>
-      <p style="margin: 0.35rem 0 0;">Support: <a href="mailto:support@crateluv.com">support@crateluv.com</a></p>
-      <p style="margin: 0.35rem 0 0;"><strong>CrateLuv System Number</strong> (Telnyx business line): <a href="tel:+15053171100">(505) 317-1100</a></p>
-      <p style="margin: 0.35rem 0 0; font-size: 0.9em;">This number is for SMS alerts only. Message &amp; data rates may apply. Reply STOP to opt-out.</p>
-      <nav>
-        <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+      <p style="margin: 0;"><strong>MagicGifts LLC</strong> | 11485 N 103rd Pl, Scottsdale, AZ 85260</p>
+      <nav style="margin-top: 0.65rem;">
+        <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="sms-compliance.html">SMS Registration</a>
       </nav>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      var form = document.getElementById('demo-contact-form');
-      var consent = document.getElementById('ec-sms-consent');
-      var submit = document.getElementById('ec-submit');
-      var note = document.getElementById('ec-demo-note');
-
-      function syncSubmit() {
-        submit.disabled = !consent.checked;
-      }
-      consent.addEventListener('change', syncSubmit);
-      syncSubmit();
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!consent.checked) return;
-        note.hidden = false;
-      });
-    })();
-  </script>
 </body>
 </html>
