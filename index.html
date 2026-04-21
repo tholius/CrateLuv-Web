@@ -1,30 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CrateLuv | Safety Alerts</title>
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
-        <footer>&copy; 2026 Magic Gifts LLC (an Arizona limited liability company). All rights reserved.</footer>
-        .cta { background: #f4f4f4; padding: 20px; border-radius: 8px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrateLuv | Pet safety & emergency contacts</title>
+  <style>
+    :root {
+      --ink: #1a1f2e;
+      --muted: #5c6578;
+      --bg: #f6f7fb;
+      --card: #fff;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --border: #e2e6ef;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-dark); }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    .brand { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; }
+    .brand span { color: var(--muted); font-weight: 500; font-size: 0.9rem; margin-left: 0.35rem; }
+    .hero {
+      padding: 3rem 0 2.5rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.03em;
+    }
+    .hero p {
+      max-width: 36rem;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    section {
+      padding: 2.5rem 0;
+    }
+    section h2 {
+      font-size: 1.35rem;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .section-lead {
+      color: var(--muted);
+      margin: 0 0 1.5rem;
+      max-width: 40rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-bottom: 2rem;
+    }
+    .tile {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.35rem;
+    }
+    .tile h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+    .tile p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      max-width: 32rem;
+    }
+    .card label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    .card label:first-of-type { margin-top: 0; }
+    .card input {
+      width: 100%;
+      margin-top: 0.35rem;
+      padding: 0.55rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .consent-block {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background: var(--bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+    }
+    .consent-row input[type="checkbox"] {
+      width: auto;
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+    }
+    .consent-row label {
+      margin: 0;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .dlc {
+      margin: 0.85rem 0 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .btn {
+      margin-top: 1.25rem;
+      width: 100%;
+      padding: 0.65rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn:hover { background: var(--accent-dark); }
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    .fine {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .site-footer {
+      margin-top: 2rem;
+      padding: 2rem 0 2.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--card);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .site-footer strong { color: var(--ink); }
+    .site-footer nav { margin-top: 0.75rem; }
+  </style>
 </head>
 <body>
-    <h1>CrateLuv</h1>
-    <p>Automated safety and wellness monitoring for home and pet owners.</p>
-    
-    <div class="cta">
-        <h3>How it Works</h3>
-        <p>CrateLuv provides automated check-in alerts. Users opt-in to receive SMS notifications regarding device status and safety protocols. In the event of a missed check-in, the system initiates a rescue cascade to your designated emergency contacts.</p>
+  <header>
+    <div class="wrap">
+      <div class="brand">CrateLuv <span>by MagicGifts LLC</span></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <h1>Safety alerts when your pets need you most</h1>
+      <p>
+        CrateLuv helps responsible pet owners coordinate check-ins and emergency contacts—so if something goes wrong while your dog is crated, the right people get notified quickly.
+      </p>
     </div>
 
-    <p>Our app is currently in private beta. For inquiries, please contact <a href="mailto:support@crateluv.com">support@crateluv.com</a>.</p>
+    <div class="wrap">
+      <div class="grid">
+        <div class="tile">
+          <h3>Check-in aware</h3>
+          <p>Automated reminders and escalation paths tailored to how you use crates and routines.</p>
+        </div>
+        <div class="tile">
+          <h3>Emergency contacts</h3>
+          <p>Invite people you trust with a clear, consent-based SMS flow before any alerts go out.</p>
+        </div>
+        <div class="tile">
+          <h3>Built for clarity</h3>
+          <p>Plain-language policies and terms so everyone knows what they are signing up for.</p>
+        </div>
+      </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 Magic Gifts LLC (an Arizona limited liability company). All rights reserved.</p>
-        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
-        <p><em>SMS Disclosure: By providing your number, you agree to receive automated alerts. Message frequency varies. Msg & Data rates may apply. Text STOP to cancel.</em></p>
-    </footer>
+    <section aria-labelledby="secure-heading">
+      <div class="wrap">
+        <h2 id="secure-heading">Secure Your Dogs</h2>
+        <p class="section-lead">
+          Add someone who can help if you miss a check-in. The sample form below mirrors how we collect consent in product flows—checkbox stays off until the contact agrees, with standard carrier disclosures.
+        </p>
+
+        <div class="card">
+          <h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Add emergency contact</h3>
+          <p style="margin: 0; color: var(--muted); font-size: 0.9rem;">Demo only — does not save data.</p>
+
+          <form id="demo-contact-form" action="#" method="get" novalidate>
+            <label for="ec-name">Contact name</label>
+            <input id="ec-name" name="ec-name" type="text" autocomplete="name" placeholder="Alex Rivera" />
+
+            <label for="ec-phone">Mobile number</label>
+            <input id="ec-phone" name="ec-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+1 480 555 0123" />
+
+            <div class="consent-block">
+              <div class="consent-row">
+                <input type="checkbox" id="ec-sms-consent" name="ec-sms-consent" value="1" />
+                <label for="ec-sms-consent">
+                  I agree to receive automated SMS messages from CrateLuv (MagicGifts LLC) about emergency pet-safety alerts for accounts that list me as a contact. I am at least 18 years of age.
+                </label>
+              </div>
+              <p class="dlc">
+                Message frequency varies. <strong>Message and data rates may apply.</strong> Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for help. Consent is not a condition of purchase. See our
+                <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a> (including SMS Terms).
+              </p>
+            </div>
+
+            <button type="submit" class="btn" id="ec-submit" disabled>Add emergency contact</button>
+            <p class="fine" id="ec-demo-note" hidden>This page is for demonstration; nothing is transmitted or stored.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap" style="padding-bottom: 1rem;">
+      <p style="color: var(--muted); margin: 0;">
+        Our mobile experience is in active development. Questions?
+        <a href="mailto:support@crateluv.com">support@crateluv.com</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p style="margin: 0;"><strong>© 2026 MagicGifts LLC</strong></p>
+      <p style="margin: 0.35rem 0 0;">Scottsdale, AZ, United States · <a href="mailto:support@crateluv.com">support@crateluv.com</a></p>
+      <nav>
+        <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('demo-contact-form');
+      var consent = document.getElementById('ec-sms-consent');
+      var submit = document.getElementById('ec-submit');
+      var note = document.getElementById('ec-demo-note');
+
+      function syncSubmit() {
+        submit.disabled = !consent.checked;
+      }
+      consent.addEventListener('change', syncSubmit);
+      syncSubmit();
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!consent.checked) return;
+        note.hidden = false;
+      });
+    })();
+  </script>
 </body>
 </html>
