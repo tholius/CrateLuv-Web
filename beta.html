@@ -3,18 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beta Testers - CrateLuv</title>
+  <title>Join the CrateLuv Beta</title>
+  <meta name="description" content="CrateLuv is a safety timer for crated and home-alone pets. If you don't check in, it alerts you, then your emergency contacts. Join the free beta." />
   <style>
     body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; color: #333; }
     .site-footer { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; }
     .warn { background: #fff8e1; border-left: 3px solid #f5a623; padding: 12px 18px; margin: 14px 0 24px; }
     h2 { margin-top: 2rem; }
+    .lead { font-size: 1.15rem; color: #222; }
+    .join { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 14px 0 8px; }
+    .join-card { border: 1px solid #ddd; border-radius: 10px; padding: 14px 18px 18px; background: #fafafa; }
+    .join-card h3 { margin: 0 0 6px; }
+    .join-card ol { padding-left: 1.2rem; margin: 8px 0 12px; }
+    .btn { display: block; text-align: center; background: #2e7d32; color: #fff !important; text-decoration: none; font-weight: 600; padding: 12px 16px; border-radius: 8px; margin: 8px 0; }
+    .btn.secondary { background: #fff; color: #2e7d32 !important; border: 2px solid #2e7d32; padding: 10px 14px; }
+    .small { font-size: 0.9rem; color: #555; }
+    .steps li { margin-bottom: 0.6rem; }
+    .story { border-left: 3px solid #ddd; padding-left: 16px; color: #444; }
   </style>
 </head>
 <body>
-  <h1>CrateLuv Beta: What to Expect</h1>
+  <h1>CrateLuv is ready for testing</h1>
 
-  <p>Thank you for helping test CrateLuv. This page explains how the beta works, what's different from the finished app, and how to send feedback.</p>
+  <p class="lead">
+    A safety timer for crated and home-alone pets. Set a timer when you leave. If you don't check in, CrateLuv
+    alerts you first, then your emergency contacts one at a time, until someone responds. Join the free beta below.
+  </p>
 
   <div class="warn">
     <strong>Please don't rely on the beta as your only safeguard.</strong> CrateLuv is beta software and can
@@ -23,38 +37,86 @@
     See the <a href="terms.html">Terms of Use</a>.
   </div>
 
-  <h2>Your free month</h2>
+  <h2 id="join">Join the beta</h2>
+  <div class="join">
+    <div class="join-card">
+      <h3>iPhone</h3>
+      <ol>
+        <li>Install <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a>, Apple's free beta-testing app.</li>
+        <li>Open the invite below on your iPhone. If it won't open from Facebook or another app, tap the <strong>&bull;&bull;&bull;</strong> menu and choose <em>Open in Safari</em>.</li>
+      </ol>
+      <a class="btn" href="https://testflight.apple.com/join/qc3QJNFC">Join on iPhone</a>
+    </div>
+    <div class="join-card">
+      <h3>Android</h3>
+      <p class="small" style="margin-top:0">Use the same Google account you use in the Play Store, and do these in order:</p>
+      <ol>
+        <li>Join the testers group.</li>
+        <li>Tap <strong>Become a tester</strong>.</li>
+        <li>Install from Google Play.</li>
+      </ol>
+      <a class="btn" href="https://groups.google.com/g/crateluv-testing">1. Join the testers group</a>
+      <a class="btn secondary" href="https://play.google.com/apps/testing/com.tholius.dogcrateguardian">2. Become a tester</a>
+      <a class="btn secondary" href="https://play.google.com/store/apps/details?id=com.tholius.dogcrateguardian">3. Install from Google Play</a>
+      <p class="small">Group access can take a little while to reach Google Play. Easier: email your Gmail address to
+        <a href="mailto:support@crateluv.com?subject=CrateLuv%20Android%20beta">support@crateluv.com</a> and we'll add you directly.</p>
+    </div>
+  </div>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><strong>Add your emergency contacts.</strong> Enter email addresses and phone numbers for the people who would help your pets. CrateLuv contacts each one and asks if they're okay being an emergency contact. Once they accept, they join your list.</li>
+    <li><strong>Set your crate's location.</strong> When you get home, CrateLuv can stop the timer automatically so no one gets notified by mistake. (Automatic stop is part of your free month of all features.)</li>
+    <li><strong>Start a timer for how long you'll be gone.</strong> For testing there's a 3-minute timer so you can watch it work, and you can also set custom times.</li>
+    <li><strong>If the timer runs out, we reach you first,</strong> by text (if you've allowed it), email and push notification. If you don't respond, after 15 minutes (the default) we try your first contact, then your next one 15 minutes later, and so on until someone responds or the list runs out. You choose the order and the wait between contacts.</li>
+  </ol>
+  <p>Once a timer is running, the alerts are handled in the cloud, so they still go out if your phone dies.</p>
+
+  <h2>Why we built it</h2>
+  <div class="story">
+    <p>
+      CrateLuv was inspired by a tragedy in the news: a family's dog was left penned up and died because no one
+      knew it was there. Soon after reading about it, we were heading out to dinner and had just put our two Boston
+      terriers in their crates (their safe place, and they love them). I started thinking: what if we're in a wreck?
+      What happens to the pups?
+    </p>
+    <p style="margin-bottom:0">That's how CrateLuv was born.</p>
+  </div>
+
+  <h2>What to expect during the beta</h2>
+
+  <h3>Your free month</h3>
   <p>
     Everyone gets all features free for <strong>30 days from the day you sign up</strong>. After that, the app
     moves to the free plan, and the paid features need a subscription. The free trial is per person and does
     not restart if you delete and re-create your account.
   </p>
 
-  <h2>Free plan vs. paid</h2>
+  <h3>Free plan vs. paid</h3>
   <ul>
     <li><strong>Paid features:</strong> crate geofence auto-stop, custom and 1-hour timers, up to 5 rescue contacts, SMS contacts, unlimited timer starts, and a second account owner.</li>
     <li><strong>Free plan:</strong> 2/3/4-hour timers, 1 rescue contact (email), manual stop, and 3 timer starts per week.</li>
-    <li><strong>No weekly timer limit</strong> during the beta.</li>
+    <li><strong>No weekly timer limit</strong> during your free month.</li>
   </ul>
 
-  <h2>Purchases are in test mode</h2>
+  <h3>Subscriptions during the beta</h3>
   <p>
-    During the beta, subscriptions run in the App Store / Google Play <strong>sandbox</strong>. You will not be
-    charged real money. Sandbox subscriptions renew much faster than real ones (minutes instead of months) and
-    then stop, so a test subscription can expire while you're using it, which is expected. You'll need a
-    sandbox/test account: Apple testers use a Sandbox Apple ID; Android testers must be on the license-testing list.
-    We'll tell you if we need to add you.
+    You don't need to subscribe to try everything: your first 30 days include all features. If you do want to test
+    the subscription screens, <strong>iPhone</strong> beta purchases run in Apple's sandbox, so you won't be charged,
+    and test subscriptions renew in minutes and then stop. <strong>Android</strong> purchases are only free if we've
+    added your Google account as a license tester. Email us first and we'll add you, otherwise please don't subscribe
+    during the beta.
   </p>
 
-  <h2>Testing shortcuts</h2>
+  <h3>Testing shortcuts</h3>
   <p>
-    During the beta, the main screen offers a <strong>3&nbsp;min</strong> timer so you can quickly watch a timer
+    The main screen offers a <strong>3&nbsp;min</strong> timer so you can quickly watch a timer
     expire and see the alerts arrive. It is for beta testing only and will be removed for the public release;
-    real use should be hours. Some test accounts can also shorten the grace period to 2 minutes; the standard grace
-    period is 15 or 30 minutes, so a full contact cascade takes a while even with a 3-minute timer.
+    real use should be hours. The standard grace period is 15 or 30 minutes, so a full contact cascade takes a
+    while even with a 3-minute timer.
   </p>
 
-  <h2>Things to know</h2>
+  <h3>Things to know</h3>
   <ul>
     <li><strong>Keep the app updated.</strong> We may require an update to keep using the beta if we fix something important.</li>
     <li><strong>Allow notifications and location</strong> (choose "Always" for geofence auto-stop) when prompted.</li>
