@@ -139,5 +139,34 @@
       <a href="instructions.html">Instructions</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="sms-compliance.html">SMS Registration</a>
     </nav>
   </footer>
+
+  <script>
+    // Anonymous visit counter: per-day totals only, no cookies, no IP or personal data.
+    (function () {
+      if (!/(^|\.)crateluv\.com$/.test(location.hostname)) return;
+      var ua = navigator.userAgent || '', ref = document.referrer || '';
+      var os = /iPhone|iPad|iPod/i.test(ua) ? 'ios' : /Android/i.test(ua) ? 'android' : 'other';
+      var source = /Instagram/i.test(ua) || /instagram\./i.test(ref) ? 'instagram'
+        : /FBAN|FBAV|FB_IAB|FBIOS/i.test(ua) || /facebook\.|fb\.com|fb\.me/i.test(ref) ? 'facebook'
+        : ref ? 'other' : 'direct';
+      var base = 'https://us-central1-crtime-test.cloudfunctions.net/betaStats?os=' + os + '&ref=' + source + '&e=';
+      function send(e) { try { fetch(base + e, { mode: 'no-cors', keepalive: true }); } catch (_) {} }
+      send('view');
+      var targets = [
+        ['testflight.apple.com', 'click_testflight'],
+        ['groups.google.com', 'click_group'],
+        ['play.google.com/apps/testing', 'click_optin'],
+        ['play.google.com/store', 'click_play']
+      ];
+      document.addEventListener('click', function (ev) {
+        var a = ev.target.closest && ev.target.closest('a[href]');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        for (var i = 0; i < targets.length; i++) {
+          if (href.indexOf(targets[i][0]) > -1) { send(targets[i][1]); break; }
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
