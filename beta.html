@@ -172,8 +172,21 @@
         : /FBAN|FBAV|FB_IAB|FBIOS/i.test(ua) || /facebook\.|fb\.com|fb\.me/i.test(ref) ? 'facebook'
         : ref ? 'other' : 'direct';
       var base = 'https://us-central1-crtime-test.cloudfunctions.net/betaStats?os=' + os + '&ref=' + source + '&e=';
-      function send(e) { try { fetch(base + e, { mode: 'no-cors', keepalive: true }); } catch (_) {} }
+      // sendBeacon is queued by the browser even if the tap navigates away at once (as it can inside the Facebook app).
+      function send(e) {
+        var url = base + e;
+        try { if (navigator.sendBeacon && navigator.sendBeacon(url)) return; } catch (_) {}
+        try { fetch(url, { mode: 'no-cors', keepalive: true }); } catch (_) {}
+      }
       send('view');
+      // Engagement: did the visitor stay 5+ seconds, and did they scroll? (once per page load each)
+      setTimeout(function () { if (document.visibilityState === 'visible') send('stay_5s'); }, 5000);
+      var scrolledOnce = false;
+      window.addEventListener('scroll', function () {
+        if (scrolledOnce || (window.scrollY || document.documentElement.scrollTop) < 150) return;
+        scrolledOnce = true;
+        send('scroll');
+      }, { passive: true });
       var targets = [
         ['apps.apple.com/app/testflight', 'click_testflight_app'],
         ['testflight.apple.com', 'click_testflight'],
