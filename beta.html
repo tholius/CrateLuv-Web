@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join the CrateLuv Beta</title>
   <meta name="description" content="CrateLuv is a safety timer for crated and home-alone pets. If you don't check in, it alerts you, then your emergency contacts. Join the free beta." />
+  <script>
+    (function () {
+      var ua = navigator.userAgent || '';
+      document.documentElement.className += /iPhone|iPad|iPod/i.test(ua) ? ' is-ios' : /Android/i.test(ua) ? ' is-android' : '';
+    })();
+  </script>
   <style>
     body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; color: #333; }
     .site-footer { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; }
@@ -20,47 +26,55 @@
     .small { font-size: 0.9rem; color: #555; }
     .steps li { margin-bottom: 0.6rem; }
     .story { border-left: 3px solid #ddd; padding-left: 16px; color: #444; }
+    .warn-line { background: #fff8e1; border-left: 3px solid #f5a623; padding: 8px 12px; margin: 6px 0 10px; font-size: 0.92rem; }
+    .is-ios .join-card.android, .is-android .join-card.ios { display: none; }
+    .show-all .join-card { display: block !important; }
+    .other-phone { display: none; margin: 4px 0 0; }
+    .is-ios .other-phone, .is-android .other-phone { display: block; }
+    .show-all .other-phone { display: none; }
+    @media (max-width: 600px) {
+      body { margin: 8px auto; padding: 14px; }
+      h1 { font-size: 1.55rem; line-height: 1.2; margin: 0 0 0.4rem; }
+      .lead { font-size: 1.02rem; margin: 0.3rem 0 0.6rem; }
+      #join { margin: 0.9rem 0 0.2rem; font-size: 1.25rem; }
+      .join-card { padding: 12px 14px 14px; }
+    }
   </style>
 </head>
 <body>
   <h1>CrateLuv is ready for testing</h1>
 
   <p class="lead">
-    A safety timer for crated and home-alone pets. Set a timer when you leave. If you don't check in, CrateLuv
-    alerts you first, then your emergency contacts one at a time, until someone responds. Join the free beta below.
+    A safety timer for crated and home-alone pets. If you don't check in, CrateLuv alerts you first, then your
+    emergency contacts one at a time. Free 30-day beta.
   </p>
 
-  <div class="warn">
-    <strong>Please don't rely on the beta as your only safeguard.</strong> CrateLuv is beta software and can
-    fail (missed notifications, phone settings that stop background apps, no signal, and bugs we haven't
-    found yet). Only crate a pet you would normally crate anyway, and keep your usual precautions in place.
-    See the <a href="terms.html">Terms of Use</a>.
-  </div>
-
-  <h2 id="join">Join the beta</h2>
+  <h2 id="join">Join the free beta</h2>
+  <p class="warn-line"><strong>Beta software:</strong> don't rely on it as your only safeguard. <a href="#beta-notice">Details</a></p>
   <div class="join">
-    <div class="join-card">
+    <div class="join-card ios">
       <h3>iPhone</h3>
-      <ol>
-        <li>Install <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a>, Apple's free beta-testing app.</li>
-        <li>Open the invite below on your iPhone. If it won't open from Facebook or another app, tap the <strong>&bull;&bull;&bull;</strong> menu and choose <em>Open in Safari</em>.</li>
-      </ol>
-      <a class="btn" href="https://testflight.apple.com/join/qc3QJNFC">Join on iPhone</a>
+      <a class="btn secondary" href="https://apps.apple.com/app/testflight/id899247664">1. Get TestFlight (free, from Apple)</a>
+      <a class="btn" href="https://testflight.apple.com/join/qc3QJNFC">2. Join the CrateLuv beta</a>
+      <p class="small">Do step 2 after TestFlight is installed. If it won't open from Facebook, tap the <strong>&bull;&bull;&bull;</strong> menu and choose <em>Open in Safari</em>.</p>
     </div>
-    <div class="join-card">
+    <div class="join-card android">
       <h3>Android</h3>
-      <p class="small" style="margin-top:0">Use the same Google account you use in the Play Store, and do these in order:</p>
-      <ol>
-        <li>Join the testers group.</li>
-        <li>Tap <strong>Become a tester</strong>.</li>
-        <li>Install from Google Play.</li>
-      </ol>
+      <p class="small" style="margin-top:0">Use the Google account from your Play Store, and do these in order:</p>
       <a class="btn" href="https://groups.google.com/g/crateluv-testing">1. Join the testers group</a>
       <a class="btn secondary" href="https://play.google.com/apps/testing/com.tholius.dogcrateguardian">2. Become a tester</a>
       <a class="btn secondary" href="https://play.google.com/store/apps/details?id=com.tholius.dogcrateguardian">3. Install from Google Play</a>
       <p class="small">Group access can take a little while to reach Google Play. Easier: email your Gmail address to
         <a href="mailto:support@crateluv.com?subject=CrateLuv%20Android%20beta">support@crateluv.com</a> and we'll add you directly.</p>
     </div>
+  </div>
+  <p class="other-phone small"><a href="#" id="showOtherPhone"></a></p>
+
+  <div class="warn" id="beta-notice">
+    <strong>Please don't rely on the beta as your only safeguard.</strong> CrateLuv is beta software and can
+    fail (missed notifications, phone settings that stop background apps, no signal, and bugs we haven't
+    found yet). Only crate a pet you would normally crate anyway, and keep your usual precautions in place.
+    See the <a href="terms.html">Terms of Use</a>.
   </div>
 
   <h2>How it works</h2>
@@ -141,6 +155,14 @@
   </footer>
 
   <script>
+    (function () {
+      var root = document.documentElement, link = document.getElementById('showOtherPhone');
+      if (!link) return;
+      link.textContent = root.className.indexOf('is-ios') > -1 ? 'Using an Android phone instead? Show the Android steps' : 'Using an iPhone instead? Show the iPhone steps';
+      link.addEventListener('click', function (ev) { ev.preventDefault(); root.className += ' show-all'; });
+    })();
+  </script>
+  <script>
     // Anonymous visit counter: per-day totals only, no cookies, no IP or personal data.
     (function () {
       if (!/(^|\.)crateluv\.com$/.test(location.hostname)) return;
@@ -153,10 +175,12 @@
       function send(e) { try { fetch(base + e, { mode: 'no-cors', keepalive: true }); } catch (_) {} }
       send('view');
       var targets = [
+        ['apps.apple.com/app/testflight', 'click_testflight_app'],
         ['testflight.apple.com', 'click_testflight'],
         ['groups.google.com', 'click_group'],
         ['play.google.com/apps/testing', 'click_optin'],
-        ['play.google.com/store', 'click_play']
+        ['play.google.com/store', 'click_play'],
+        ['mailto:support@crateluv.com', 'click_email']
       ];
       document.addEventListener('click', function (ev) {
         var a = ev.target.closest && ev.target.closest('a[href]');
